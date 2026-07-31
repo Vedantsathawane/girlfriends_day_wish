@@ -15,13 +15,6 @@ export const galleryImages: GalleryItem[] = [
     type: 'image'
   },
   {
-    id: '2',
-    url: '/love-assets/100.mp4',
-    caption: 'A beautiful moment captured in motion.',
-    aspectRatio: 'aspect-video',
-    type: 'video'
-  },
-  {
     id: '3',
     url: '/love-assets/101.jpeg',
     caption: 'That beautiful smile that lights up my entire world.',

@@ -99,7 +99,7 @@ export const FinalMessage: React.FC = () => {
             transition={{ duration: 0.8, delay: 2.4 }}
             className="text-[10px] sm:text-xs tracking-[0.3em] uppercase text-rose-400/70 font-semibold mt-3"
           >
-            FOREVER YOURS ❤️
+            YOUR LOVING DADU ❤️
           </motion.span>
         </div>
 

@@ -48,6 +48,33 @@ function App() {
     };
   }, [showIntro]);
 
+  // Synchronize playing state with actual audio element
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (isPlaying) {
+      if (audio.paused) {
+        audio.play().catch((err) => {
+          console.log("Audio playback failed to sync:", err);
+          setIsPlaying(false);
+        });
+      }
+    } else {
+      if (!audio.paused) {
+        audio.pause();
+      }
+    }
+  }, [isPlaying]);
+
+  // Synchronize mute state with actual audio element
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (audio) {
+      audio.muted = isMuted;
+    }
+  }, [isMuted]);
+
   const handleIntroComplete = () => {
     setShowIntro(false);
     setIsPlaying(true);
