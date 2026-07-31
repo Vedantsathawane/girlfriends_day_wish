@@ -63,8 +63,8 @@ export const Gallery: React.FC = () => {
           </p>
         </div>
 
-        {/* Fluid Masonry Layout */}
-        <div className="columns-1 sm:columns-2 md:columns-3 gap-6 space-y-6 [column-fill:_balance]">
+        {/* Symmetrical ambient glow grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {galleryImages.map((img, index) => (
             <motion.div
               key={img.id}
@@ -73,16 +73,32 @@ export const Gallery: React.FC = () => {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.8, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
               onClick={() => openLightbox(index)}
-              className="break-inside-avoid relative overflow-hidden rounded-3xl group cursor-pointer shadow-lg border border-white/5 glass-card-hover"
+              className="relative overflow-hidden rounded-3xl group cursor-pointer shadow-lg border border-white/5 glass-card-hover aspect-[3/4] flex items-center justify-center bg-black/20"
             >
-              {/* Image or Video element */}
+              {/* Layer 1: Ambient Blurred Background */}
+              {img.type === 'video' ? (
+                <video
+                  src={img.url}
+                  muted
+                  loop
+                  className="absolute inset-0 w-full h-full object-cover filter blur-2xl opacity-35 scale-110 pointer-events-none"
+                />
+              ) : (
+                <img
+                  src={img.url}
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover filter blur-2xl opacity-35 scale-110 pointer-events-none"
+                />
+              )}
+
+              {/* Layer 2: Full Uncropped Foreground Media */}
               {img.type === 'video' ? (
                 <video
                   src={img.url}
                   muted
                   loop
                   playsInline
-                  className="w-full h-auto object-cover transform duration-700 ease-out group-hover:scale-105"
+                  className="relative z-10 w-full h-full object-contain p-2 transform duration-700 ease-out group-hover:scale-[1.03]"
                   onMouseEnter={(e) => e.currentTarget.play().catch(() => {})}
                   onMouseLeave={(e) => {
                     e.currentTarget.pause();
@@ -94,12 +110,12 @@ export const Gallery: React.FC = () => {
                   src={img.url}
                   alt={img.caption}
                   loading="lazy"
-                  className="w-full h-auto object-cover transform duration-700 ease-out group-hover:scale-105 group-hover:rotate-1"
+                  className="relative z-10 w-full h-full object-contain p-2 transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
               )}
 
               {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+              <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/85 via-black/35 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                 <div className="flex justify-between items-end">
                   <div className="max-w-[80%]">
                     <p className="text-white text-sm font-medium tracking-wide">
