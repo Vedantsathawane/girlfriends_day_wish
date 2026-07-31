@@ -43,9 +43,9 @@ export const galleryImages: GalleryItem[] = [
     type: 'image'
   },
   {
-    id: '7',
-    url: '/love-assets/5.jpeg',
-    caption: 'Every ordinary day becomes extraordinary with you.',
+    id: '8',
+    url: '/love-assets/1001.jpeg',
+    caption: 'A magical night filled with lights, color, and my favorite person by my side.',
     aspectRatio: 'aspect-[3/4]',
     type: 'image'
   }
