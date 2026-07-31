@@ -15,13 +15,6 @@ export const galleryImages: GalleryItem[] = [
     type: 'image'
   },
   {
-    id: '3',
-    url: '/love-assets/101.jpeg',
-    caption: 'That beautiful smile that lights up my entire world.',
-    aspectRatio: 'aspect-square',
-    type: 'image'
-  },
-  {
     id: '4',
     url: '/love-assets/2.jpeg',
     caption: 'Cozy moments, coffee cups, and absolute peace.',
@@ -31,14 +24,14 @@ export const galleryImages: GalleryItem[] = [
   {
     id: '5',
     url: '/love-assets/3.jpeg',
-    caption: 'The sparkle in your eyes that I fall in love with every day.',
+    caption: 'That beautiful smile that lights up my entire world.',
     aspectRatio: 'aspect-[4/3]',
     type: 'image'
   },
   {
     id: '6',
     url: '/love-assets/4.jpeg',
-    caption: 'Watching the sunset and talking about our dreams.',
+    caption: 'Your laughter is my favorite sound in the universe.',
     aspectRatio: 'aspect-video',
     type: 'image'
   },
