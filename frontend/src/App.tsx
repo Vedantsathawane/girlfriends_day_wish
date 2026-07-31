@@ -75,9 +75,12 @@ function App() {
     }
   }, [isMuted]);
 
+  const handleIntroStart = () => {
+    setIsPlaying(true);
+  };
+
   const handleIntroComplete = () => {
     setShowIntro(false);
-    setIsPlaying(true);
   };
 
   const handleScrollToTimeline = () => {
@@ -106,6 +109,7 @@ function App() {
         {showIntro ? (
           <IntroScreen
             key="intro"
+            onStart={handleIntroStart}
             onComplete={handleIntroComplete}
             audioRef={audioRef}
             isMuted={isMuted}

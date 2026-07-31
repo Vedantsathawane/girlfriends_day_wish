@@ -4,12 +4,14 @@ import { Heart, Volume2 } from 'lucide-react';
 
 interface IntroScreenProps {
   onComplete: () => void;
+  onStart: () => void;
   audioRef: React.RefObject<HTMLAudioElement | null>;
   isMuted: boolean;
 }
 
 export const IntroScreen: React.FC<IntroScreenProps> = ({
   onComplete,
+  onStart,
   audioRef,
   isMuted,
 }) => {
@@ -154,13 +156,11 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({
   }, [phase, onComplete]);
 
   const handleStart = () => {
-    // Unmute & play audio, satisfying browser interactions
+    // Set mute state and trigger start via App.tsx isPlaying state
     if (audioRef.current) {
       audioRef.current.muted = isMuted;
-      audioRef.current.play().catch((err) => {
-        console.log("Audio play blocked/failed:", err);
-      });
     }
+    onStart();
     setPhase('typing');
   };
 
