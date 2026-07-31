@@ -9,7 +9,7 @@ export interface GalleryItem {
 export const galleryImages: GalleryItem[] = [
   {
     id: '1',
-    url: '/love-assets/WhatsApp Image1.jpeg',
+    url: '/love-assets/whatsapp_image1.jpeg',
     caption: 'My absolute favorite picture of us. Holding your hand is holding my entire world.',
     aspectRatio: 'aspect-[3/4]',
     type: 'image'

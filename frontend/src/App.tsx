@@ -97,7 +97,7 @@ function App() {
       {/* Background Audio element */}
       <audio
         ref={audioRef}
-        src="/love-assets/romantic_piano.mp3"
+        src="https://assets.codepen.io/4358584/Ancle+Music+-+Romantic+Piano.mp3"
         loop
         preload="auto"
       />
