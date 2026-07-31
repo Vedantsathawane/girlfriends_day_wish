@@ -15,6 +15,13 @@ export const galleryImages: GalleryItem[] = [
     type: 'image'
   },
   {
+    id: '2',
+    url: '/love-assets/whatsapp_image1.jpeg',
+    caption: 'Every second with you is a memory I will cherish forever.',
+    aspectRatio: 'aspect-[3/4]',
+    type: 'image'
+  },
+  {
     id: '4',
     url: '/love-assets/2.jpeg',
     caption: 'Cozy moments, coffee cups, and absolute peace.',
