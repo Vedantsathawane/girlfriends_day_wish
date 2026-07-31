@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+@theme {
+  --color-love-pink: #fbcfe8;
+  --color-love-rose: #fda4af;
+  --color-love-gold: #b76e79;
+  --color-love-lavender: #e9d5ff;
+  --color-love-peach: #ffedd5;
+  --color-love-cream: #fffdf9;
+  --color-love-dark: #120e16;
+  --color-love-darker: #0b080e;
+  --color-love-accent: #db2777;
+  
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+  --font-cursive: "Great Vibes", cursive;
+}
+
+/* Custom Base Elements */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: "Inter", sans-serif;
+  background-color: #120e16;
+  color: #ffedf2;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(219, 39, 119, 0.3) rgba(18, 14, 22, 0.8);
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #120e16;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(219, 39, 119, 0.4);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(219, 39, 119, 0.6);
+}
+
+/* Lenis Smooth Scroll rules */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overflow: clip;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Premium UI Utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+}
+
+.glass-card-hover {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-card-hover:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(251, 113, 133, 0.3);
+  box-shadow: 0 20px 50px -10px rgba(244, 63, 94, 0.15), 0 0 20px 0 rgba(244, 63, 94, 0.05);
+  transform: translateY(-4px);
+}
+
+.text-gradient-rose {
+  background: linear-gradient(135deg, #ffedf2 0%, #fda4af 50%, #b76e79 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #fff3e3 0%, #e2b389 50%, #b76e79 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Animations */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+@keyframes float-medium {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(-5deg);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+    text-shadow: 0 0 15px rgba(244, 63, 94, 0.6);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+.animate-float-medium {
+  animation: float-medium 6s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
+/* Bokeh Lights Background */
+.bokeh-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bokeh-light {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  mix-blend-mode: screen;
+}
+
+/* Custom styles for signature path drawing */
+.signature-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
