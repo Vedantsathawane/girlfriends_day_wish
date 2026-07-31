@@ -156,9 +156,12 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({
   }, [phase, onComplete]);
 
   const handleStart = () => {
-    // Set mute state and trigger start via App.tsx isPlaying state
+    // Unmute & play audio synchronously inside the click handler to satisfy browser gesture requirements
     if (audioRef.current) {
       audioRef.current.muted = isMuted;
+      audioRef.current.play().catch((err) => {
+        console.log("Audio play blocked/failed in click handler:", err);
+      });
     }
     onStart();
     setPhase('typing');
