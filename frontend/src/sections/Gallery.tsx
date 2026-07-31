@@ -63,61 +63,56 @@ export const Gallery: React.FC = () => {
           </p>
         </div>
 
-        {/* Balanced Grid Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {galleryImages.map((img, index) => {
-            const isLarge = index === 0;
-            return (
-              <motion.div
-                key={img.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.8, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                onClick={() => openLightbox(index)}
-                className={`relative overflow-hidden rounded-3xl group cursor-pointer shadow-lg border border-white/5 glass-card-hover ${
-                  isLarge ? 'md:col-span-2' : ''
-                }`}
-              >
-                {/* Image or Video element */}
-                {img.type === 'video' ? (
-                  <video
-                    src={img.url}
-                    muted
-                    loop
-                    playsInline
-                    className="w-full h-[280px] sm:h-[350px] md:h-[400px] object-cover transform duration-700 ease-out group-hover:scale-105"
-                    onMouseEnter={(e) => e.currentTarget.play().catch(() => {})}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.pause();
-                      e.currentTarget.currentTime = 0;
-                    }}
-                  />
-                ) : (
-                  <img
-                    src={img.url}
-                    alt={img.caption}
-                    loading="lazy"
-                    className="w-full h-[280px] sm:h-[350px] md:h-[400px] object-cover transform duration-700 ease-out group-hover:scale-105 group-hover:rotate-1"
-                  />
-                )}
+        {/* Fluid Masonry Layout */}
+        <div className="columns-1 sm:columns-2 md:columns-3 gap-6 space-y-6 [column-fill:_balance]">
+          {galleryImages.map((img, index) => (
+            <motion.div
+              key={img.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.8, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
+              onClick={() => openLightbox(index)}
+              className="break-inside-avoid relative overflow-hidden rounded-3xl group cursor-pointer shadow-lg border border-white/5 glass-card-hover"
+            >
+              {/* Image or Video element */}
+              {img.type === 'video' ? (
+                <video
+                  src={img.url}
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-auto object-cover transform duration-700 ease-out group-hover:scale-105"
+                  onMouseEnter={(e) => e.currentTarget.play().catch(() => {})}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.pause();
+                    e.currentTarget.currentTime = 0;
+                  }}
+                />
+              ) : (
+                <img
+                  src={img.url}
+                  alt={img.caption}
+                  loading="lazy"
+                  className="w-full h-auto object-cover transform duration-700 ease-out group-hover:scale-105 group-hover:rotate-1"
+                />
+              )}
 
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                  <div className="flex justify-between items-end">
-                    <div className="max-w-[80%]">
-                      <p className="text-white text-sm font-medium tracking-wide">
-                        {img.caption}
-                      </p>
-                    </div>
-                    <div className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/10 group-hover:scale-110 transition-transform duration-300">
-                      <ZoomIn className="w-4 h-4" />
-                    </div>
+              {/* Hover Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                <div className="flex justify-between items-end">
+                  <div className="max-w-[80%]">
+                    <p className="text-white text-sm font-medium tracking-wide">
+                      {img.caption}
+                    </p>
+                  </div>
+                  <div className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/10 group-hover:scale-110 transition-transform duration-300">
+                    <ZoomIn className="w-4 h-4" />
                   </div>
                 </div>
-              </motion.div>
-            );
-          })}
+              </div>
+            </motion.div>
+          ))}
         </div>
 
       </div>
